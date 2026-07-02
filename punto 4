@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+class Empleado{
+public:
+    virtual float calcularSalario() = 0;
+};
+class EmpleadoPorHora : public Empleado{
+private:
+    int horas;
+    float pagoHora;
+
+public:
+    EmpleadoPorHora(int h, float p){
+        horas = h;
+        pagoHora = p;
+    }
+    float calcularSalario(){
+        return horas * pagoHora;
+    }
+};
+
+class EmpleadoFijo : public Empleado{
+private:
+    float salario;
+public:
+    EmpleadoFijo(float s){
+        salario = s;
+    }
+    float calcularSalario(){
+        return salario;
+    }
+};
+int main(){
+
+    Empleado* empleados[4];
+
+    empleados[0] = new EmpleadoPorHora(40, 5000);
+    empleados[1] = new EmpleadoFijo(250000);
+    empleados[2] = new EmpleadoPorHora(35, 4500);
+    empleados[3] = new EmpleadoFijo(280000);
+
+    float total = 0;
+
+    for(int i = 0; i < 4; i++){
+        cout << "Salario: $" << empleados[i]->calcularSalario() << endl;
+        total = total + empleados[i]->calcularSalario();
+    }
+
+    cout << endl;
+    cout << "Salario total: $" << total << endl;
+
+    return 0;
+}+-
