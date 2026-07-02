@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Vehiculo{
+public:
+    virtual void mover() = 0;
+};
+class Coche : public Vehiculo{
+public:
+    void mover(){
+        cout << "El coche se mueve por la carretera." << endl;
+    }
+};
+class Bicicleta : public Vehiculo{
+public:
+    void mover(){
+        cout << "La bicicleta se mueve pedaleando." << endl;
+    }
+};
+void mostrarMovimiento(Vehiculo* vehiculos[], int cantidad){
+
+    for(int i = 0; i < cantidad; i++){
+        vehiculos[i]->mover();
+    }
+}
+int main(){
+
+    Vehiculo* vehiculos[4];
+
+    vehiculos[0] = new Coche();
+    vehiculos[1] = new Bicicleta();
+    vehiculos[2] = new Coche();
+    vehiculos[3] = new Bicicleta();
+
+    mostrarMovimiento(vehiculos, 4);
+
+    return 0;
+}
