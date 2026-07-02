@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class Animal{
+public:
+    virtual void hacerSonido() = 0;
+};
+class Perri : public Animal{
+public:
+    void hacerSonido(){
+        cout << "Guau" << endl;
+    }
+};
+class Gato : public Animal{
+public:
+    void hacerSonido(){
+        cout << "Miau" << endl;
+    }
+};
+int main(){
+
+    Animal* animales[4];
+
+    animales[0] = new Perri();
+    animales[1] = new Gato();
+    animales[2] = new Perri();
+    animales[3] = new Gato();
+
+    for(int i = 0; i < 4; i++){
+        animales[i]->hacerSonido();
+    }
+    return 0;
+}
