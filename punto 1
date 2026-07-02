@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Figura{
+public:
+    virtual float area() = 0;
+};
+class Circulo : public Figura{
+private:
+    float radio;
+
+public:
+    Circulo(float r){
+        radio = r;
+    }
+    float area(){
+        return 3.1416 * radio * radio;
+    }
+};
+class Rectangulo : public Figura{
+private:
+    float ancho;
+    float alto;
+
+public:
+    Rectangulo(float a, float h){
+        ancho = a;
+        alto = h;
+    }
+    float area(){
+        return ancho * alto;
+    }
+};
+int main(){
+
+    Figura* figuras[4];
+
+    figuras[0] = new Circulo(5);
+    figuras[1] = new Rectangulo(4, 6);
+    figuras[2] = new Circulo(3);
+    figuras[3] = new Rectangulo(10, 2);
+
+    for(int i = 0; i < 4; i++){
+        cout << "Area: " << figuras[i]->area() << endl;
+    }
+    return 0;
+}
